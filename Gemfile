@@ -17,6 +17,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'bcrypt'
 gem 'jquery-turbolinks'
+gem 'fog'
 group :development, :test do
   gem 'byebug'
   gem 'sqlite3'

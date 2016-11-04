@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  helper_method :current_user, :logged_in?, :user_name, :require_user
+  helper_method :current_user, :logged_in?, :user_name, :require_user, :require_not_user
 
   def current_user
   	@current_user ||= Chef.find(session[:chef_id]) if session[:chef_id]
@@ -17,8 +17,17 @@ class ApplicationController < ActionController::Base
   def require_user
     if !logged_in?
       flash[:danger] = "You must be logged in for that action"
-      redirect_to root_path
+      redirect_to :back
     end
+  end
+
+  def require_not_user
+    if logged_in?
+      flash[:danger] = "You must be logged out for that action"
+      redirect_to :back
+    end
+    rescue ActionController::RedirectBackError
+      redirect_to root_path
   end
 
 end

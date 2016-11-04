@@ -2,6 +2,8 @@ class ChefsController < ApplicationController
 	before_action :set_chef,  only: [:edit, :update ,:show]
 	before_action :require_user, except: [:show, :index]
 	before_action :require_same_user , only: [:edit, :update]
+	before_action :require_not_user , only: [:new, :create]
+
 	
 	def show
 		@title = @chef.chefname
@@ -55,7 +57,7 @@ class ChefsController < ApplicationController
 			if Chef.exists?(params[:id])
 				@chef = Chef.find(params[:id])
 			else
-				redirect_to root_path
+				redirect_to :back
 			end
 		end
 end
