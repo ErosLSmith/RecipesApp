@@ -1,0 +1,36 @@
+<h1>All Chefs</h1>
+<%= will_paginate %>
+<% @chefs.each do |chef| %>
+ <div class="row">
+ 	<div class="col-md-2">
+ 		<section class="chef_info center">
+ 			<%= link_to gravatar_for(chef, size: 120), chef_path(chef) %>
+ 			<h5>
+ 				Chef name: <%= chef.chefname %>
+ 			</h5>
+ 		</section>
+ 	</div>
+ 	<div class="col-lg-6 well">
+ 		<h4>
+ 			<%= link_to chef.chefname, chef_path(chef) %>
+ 		</h4>
+ 		<p>
+ 			<%= chef.email %>
+ 		</p>
+ 		<p>
+ 			<span class="quite">
+ 				<small>
+ 					Created <%= time_ago_in_words(chef.created_at) %> ago,
+ 					 updated <%= time_ago_in_words(chef.updated_at) %> ago
+ 				</small>
+ 			</span>
+ 		</p>
+ 	</div>
+ 	<div class="col-lg-4">
+ 		<%= image_tag(chef.picture.url, size: "250x150", class: "gravatar") if chef.picture? %>
+ 	</div>
+ </div>
+ <hr/>
+<% end %>
+<%= will_paginate %>
+<hr/>

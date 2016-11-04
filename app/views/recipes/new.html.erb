@@ -1,3 +1,5 @@
-<%= render 'recipes/title'%>
-<%= render 'recipes/errors'%>
+<% if logged_in? %>
+<%= render 'shared/title' , title: "New Recipe"%>
+<%= render 'shared/errors' %>
 <%= render 'recipes/form'%>
+<% end %>
