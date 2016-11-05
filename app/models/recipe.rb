@@ -3,8 +3,8 @@ class Recipe < ActiveRecord::Base
 	has_many :likes
 	validates :name, presence: true, length: { minimum: 5, maximum: 100 }
 	validates :chef_id, presence: true
-	validates :summary, presence: true, length: { minimum: 5, maximum: 100 }
-	validates :description, presence: true, length: { minimum: 5, maximum: 100 }
+	validates :summary, presence: true, length: { minimum: 5, maximum: 1000 }
+	validates :description, presence: true, length: { minimum: 5, maximum: 10000 }
 	mount_uploader :picture, PictureUploader
 	validate :picture_size
 	default_scope -> { order(updated_at: :desc) }
