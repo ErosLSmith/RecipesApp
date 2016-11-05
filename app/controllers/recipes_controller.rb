@@ -35,6 +35,7 @@ class RecipesController < ApplicationController
 	def edit
 		@title = "Edit Recipe"
 		@submit_button_text = "Edit"
+		@obj = @recipe
 	end
 	
 	def update
