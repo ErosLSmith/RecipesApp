@@ -1,0 +1,5 @@
+<% if logged_in? %>
+<%= render 'shared/title' , title: "New Ingredient"%>
+<%= render 'shared/errors' %>
+<%= render 'ingredients/form'%>
+<% end %>
