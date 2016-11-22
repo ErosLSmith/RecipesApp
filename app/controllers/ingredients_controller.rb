@@ -17,6 +17,11 @@ class IngredientsController < ApplicationController
 		end
 	end
 	def show
+		@ingredient = Ingredient.find(params[:id])
+		@recipes = @ingredient.recipes.paginate(page: params[:page], per_page: 2)
+	end
+	def index
+		@ingredients = Ingredient.paginate(page: params[:page], per_page: 2)
 	end
 	private
 		def ingredient_params

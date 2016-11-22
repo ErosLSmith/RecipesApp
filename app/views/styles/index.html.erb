@@ -1,0 +1,22 @@
+<%= render 'shared/title' , title: "All Styles"%>
+<ul class="nav nav-tabs"> 
+	<li class="active">
+		<%= link_to "Styles", styles_path %>
+	</li>
+	<li >
+		<%= link_to "Ingredients", ingredients_path %>
+	</li>
+</ul>
+<%= will_paginate %>
+<% @styles.each do |style| %>
+ <div class="row">
+ 	<div class="col-lg-6 well">
+ 		<h4>
+ 			<%= link_to style.name, style_path(style) %>
+ 		</h4>
+ 	</div>
+ </div>
+ <hr/>
+<% end %>
+<%= will_paginate %>
+<hr/>

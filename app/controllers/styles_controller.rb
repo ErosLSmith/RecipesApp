@@ -17,6 +17,11 @@ class StylesController < ApplicationController
 		end
 	end
 	def show
+		@style = Style.find(params[:id])
+		@recipes = @style.recipes.paginate(page: params[:page], per_page: 2)
+	end
+	def index
+		@styles = Style.paginate(page: params[:page], per_page: 2)
 	end
 	private
 		def style_params
