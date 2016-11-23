@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+	before_action :require_user, except: [:show, :index]
 	def new
 		@title = "New Ingredient"
 		@submit_button_text = "Create"

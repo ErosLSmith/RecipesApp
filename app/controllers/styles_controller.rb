@@ -1,4 +1,5 @@
 class StylesController < ApplicationController
+	before_action :require_user, except: [:show, :index]
 	def new
 		@title = "New Style"
 		@submit_button_text = "Create"
