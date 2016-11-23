@@ -11,7 +11,7 @@
 		<%= f.text_area :description , rows: 10 %>
 
 			<strong>Styles:</strong>
-			<%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |check_box| %>
+			<%= f.collection_check_boxes(:style_ids, Style.all, :id, :name) do |check_box| %>
 			<% check_box.label(class: "checkbox-inline input_checkbox") {check_box.check_box(class: "checkbox") + check_box.text} %>
 			<% end %>
 <br><br>

@@ -7,10 +7,10 @@ class ChefsController < ApplicationController
 	
 	def show
 		@title = @chef.chefname
-		@recipes = @chef.recipes.paginate(page: params[:page], per_page: 2)
+		@recipes = @chef.recipes.paginate(page: params[:page], per_page: 10)
 	end
 	def index
-		@chefs = Chef.paginate(page: params[:page], per_page: 2)
+		@chefs = Chef.paginate(page: params[:page], per_page: 10)
 	end
 	def new
 		@chef = Chef.new
