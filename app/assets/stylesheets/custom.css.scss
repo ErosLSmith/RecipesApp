@@ -83,6 +83,10 @@ input {
 	height: auto !important;
 }
 
+.input_checkbox input {
+	position: static !important;
+	margin-left: 0px !important;
+}
 span.picture {
 	margin-top: 10px;
 	input {
