@@ -10,6 +10,9 @@
 	</div>
 	<div class="col-md-8">
 		<%= link_to("Edit", edit_recipe_path(@recipe), class: "btn btn-success pull-right") if logged_in? && @recipe.chef.id == current_user.id %>
+		<br><br>
+		<%= link_to("Delete", @recipe, method: :delete, class: "btn btn-success pull-right" , data: { confirm: "You sure?" })  if logged_in? && @recipe.chef.id == current_user.id %>
+
 		<h3>
 			<%= @recipe.summary %>
 		</h3>

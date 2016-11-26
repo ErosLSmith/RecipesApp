@@ -10,6 +10,9 @@
 	</div>
 	<div class="col-md-8">
 		<%= link_to("Edit", edit_chef_path(@chef), class: "btn btn-success pull-right") if logged_in? && @chef.id == current_user.id %>
+		<br><br>
+		<%= link_to("Delete", @chef, method: :delete, class: "btn btn-success pull-right" , data: { confirm: "You sure?" })  if logged_in? && current_user.admin? %>
+
 		<h3>
 			<%= @chef.email %>
 		</h3>

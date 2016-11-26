@@ -1,9 +1,9 @@
 class ChefsController < ApplicationController
-	before_action :set_chef,  only: [:edit, :update ,:show]
+	before_action :set_chef,  only: [:edit, :update ,:show ,:destroy]
 	before_action :require_user, except: [:show, :index, :new, :create]
 	before_action :require_same_user , only: [:edit, :update]
 	before_action :require_not_user , only: [:new, :create]
-
+	before_action :require_admin , only: [:destroy]
 	
 	def show
 		@title = @chef.chefname
@@ -43,12 +43,20 @@ class ChefsController < ApplicationController
 			render :edit
 		end
 	end
+
+	def destroy
+		if @chef.destroy
+			flash[:success] = "Successfully Deleted"
+			redirect_to chefs_path
+		end
+	end
+
 	private
 		def chef_params
 			params.require(:chef).permit(:chefname, :email, :password, :picture)
 		end
 		def require_same_user
-			if current_user != @chef
+			if current_user != @chef 
 				flash[:danger] = "Only allowed to edit own profile"
 				redirect_to root_path
 			end

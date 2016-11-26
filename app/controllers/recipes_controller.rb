@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-	before_action :set_recipe,  only: [:edit, :update ,:show]
-	before_action :require_same_user , only: [:edit, :update]
+	before_action :set_recipe,  only: [:edit, :update ,:show, :destroy]
+	before_action :require_same_user , only: [:edit, :update, :destroy]
 	before_action :require_user, except: [:show, :index]
 
 
@@ -44,6 +44,13 @@ class RecipesController < ApplicationController
 			redirect_to recipe_path(@recipe)
 		else
 			render :edit
+		end
+	end
+	
+	def destroy
+		if @recipe.destroy
+			flash[:success] = "Successfully Deleted"
+			redirect_to recipes_path
 		end
 	end
 
